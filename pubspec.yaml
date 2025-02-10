@@ -1,0 +1,66 @@
+name: v1_micro_finance
+# Description of the project
+description: "A new Flutter project."
+
+# Prevents the package from being published
+publish_to: 'none'
+
+# Version of the project
+version: 0.1.0
+
+# Flutter SDK environment requirement
+environment:
+  sdk: ^3.6.0
+
+# Project dependencies
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.2
+  http: ^1.2.2
+  image_picker: ^1.1.2
+  http_parser: ^4.1.2
+  url_launcher: ^6.0.9
+  carousel_slider: ^5.0.0
+  flutter_bounce: ^1.1.0
+  google_fonts: ^6.2.1
+  animate_do: ^3.3.4
+  country_pickers: ^3.0.1
+  country_picker: ^2.0.27
+  cupertino_icons: ^1.0.8
+  flutter_email_sender: ^6.0.3
+  flutter_animate: ^4.5.2
+
+# Developer dependencies for testing and linting
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: "^0.14.3"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/app_icon_bg_blue.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
+# Flutter-specific configurations
+flutter:
+  uses-material-design: true
+
+  # Assets declaration
+  assets:
+    - assets/images/
+    - assets/splash/splash_screen.gif
+    - assets/logos/
+
+  # Fonts declaration
+  fonts:
+    - family: AveriaLibre
+      fonts:
+        - asset: assets/fonts/AveriaLibre-Bold.ttf
+        - asset: assets/fonts/AveriaLibre-BoldItalic.ttf
+        - asset: assets/fonts/AveriaLibre-Italic.ttf
+        - asset: assets/fonts/AveriaLibre-Light.ttf
+        - asset: assets/fonts/AveriaLibre-LightItalic.ttf
+        - asset: assets/fonts/AveriaLibre-Regular.ttf
