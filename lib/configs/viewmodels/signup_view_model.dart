@@ -13,7 +13,7 @@ class SignupViewModel extends ChangeNotifier {
     required String name,
     required String email,
     required String password,
-    required String confirmPassword,
+    // required String confirmPassword,
     required String country,
     String? referCode,
   }) async {
@@ -23,7 +23,7 @@ class SignupViewModel extends ChangeNotifier {
         name: name,
         email: email,
         password: password,
-        confirmPassword: confirmPassword,
+        // confirmPassword: confirmPassword,
         country: country,
         referCode: referCode,
       );

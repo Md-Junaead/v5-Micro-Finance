@@ -1,6 +1,6 @@
 // File: lib/models/user.dart
 
-/// A model class that represents a user.
+/// Model class for a User.
 class User {
   final int id;
   final String userid;
@@ -28,37 +28,33 @@ class User {
     required this.referralCode,
   });
 
-  /// Factory method to create a User object from JSON data.
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      id: json['id'],
-      userid: json['userid'],
-      password: json['password'],
-      name: json['name'],
-      email: json['email'],
-      phoneNo: json['phoneNo'],
-      dob: DateTime.parse(json['dob']),
-      address: json['address'],
-      country: json['country'],
-      image: json['image'],
-      referralCode: json['referralCode'],
-    );
-  }
+  /// Creates a User object from JSON.
+  factory User.fromJson(Map<String, dynamic> json) => User(
+        id: json['id'],
+        userid: json['userid'],
+        password: json['password'],
+        name: json['name'],
+        email: json['email'],
+        phoneNo: json['phoneNo'],
+        dob: DateTime.parse(json['dob']),
+        address: json['address'],
+        country: json['country'],
+        image: json['image'],
+        referralCode: json['referralCode'],
+      );
 
-  /// Converts a User object into a JSON map.
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'userid': userid,
-      'password': password,
-      'name': name,
-      'email': email,
-      'phoneNo': phoneNo,
-      'dob': dob.toIso8601String(),
-      'address': address,
-      'country': country,
-      'image': image,
-      'referralCode': referralCode,
-    };
-  }
+  /// Converts a User object into JSON.
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'userid': userid,
+        'password': password,
+        'name': name,
+        'email': email,
+        'phoneNo': phoneNo,
+        'dob': dob.toIso8601String(),
+        'address': address,
+        'country': country,
+        'image': image,
+        'referralCode': referralCode,
+      };
 }

@@ -7,7 +7,7 @@ class ApiService {
     required String name,
     required String email,
     required String password,
-    required String confirmPassword,
+    // required String confirmPassword,
     required String country,
     String? referCode,
   }) async {
@@ -16,7 +16,7 @@ class ApiService {
       'name': name,
       'email': email,
       'password': password,
-      'confirmPassword': confirmPassword,
+      // 'confirmPassword': confirmPassword,
       'country': country,
       if (referCode != null && referCode.isNotEmpty) 'referCode': referCode,
     };

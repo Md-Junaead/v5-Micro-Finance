@@ -19,7 +19,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final fullNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
+  // final confirmPasswordController = TextEditingController();
   final referCodeController = TextEditingController();
 
   String? selectedCountry;
@@ -40,7 +40,7 @@ class _SignupScreenState extends State<SignupScreen> {
               TextFieldWidget(controller: fullNameController, label: 'Full Name'),SizedBox(height: 5),
               TextFieldWidget(controller: emailController, label: 'Email', keyboardType: TextInputType.emailAddress), SizedBox(height: 5),
               TextFieldWidget(controller: passwordController, label: 'Password', obscure: true), SizedBox(height: 5),
-              TextFieldWidget(controller: confirmPasswordController, label: 'Confirm Password', obscure: true), SizedBox(height: 5),
+              // TextFieldWidget(controller: confirmPasswordController, label: 'Confirm Password', obscure: true), SizedBox(height: 5),
               // Country selection widget
               CountryPickerWidget(
                 selectedCountry: selectedCountry,
@@ -64,7 +64,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             name: fullNameController.text,
                             email: emailController.text,
                             password: passwordController.text,
-                            confirmPassword: confirmPasswordController.text,
+                            // confirmPassword: confirmPasswordController.text,
                             country: selectedCountry ?? "",
                             referCode: referCodeController.text,
                           );
