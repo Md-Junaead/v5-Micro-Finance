@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:v1_micro_finance/screens/withdraw/profit/profit_bank.dart';
 import 'package:v1_micro_finance/screens/withdraw/profit/profit_crypto.dart';
-import 'package:v1_micro_finance/widgets/comon_appbar.dart';
+import 'package:v1_micro_finance/configs/widgets/comon_appbar.dart';
 
 class ProfitGateway extends StatefulWidget {
   const ProfitGateway({super.key});

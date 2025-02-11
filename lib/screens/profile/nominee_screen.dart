@@ -1,94 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:v1_micro_finance/configs/routes/routes_name.dart';
-import 'package:v1_micro_finance/widgets/comon_appbar.dart';
+import 'package:provider/provider.dart';
+import 'package:v1_micro_finance/configs/viewmodels/nominee_viewmodel.dart';
+import 'package:v1_micro_finance/configs/widgets/comon_appbar.dart';
+import 'package:v1_micro_finance/configs/widgets/nominee_details.dart';
 
 class NomineeScreen extends StatelessWidget {
   const NomineeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Dummy data from API
-    final nomineeData = {
-      'name': 'SFL Commerce',
-      'email': 'sfl@example.com',
-      'phone': '+1234567890',
-      'dob': '01-01-1990',
-      'relation': 'Company'
-    };
-
     return Scaffold(
-      appBar: CommonAppBar(title: "Nominee details"),
+      appBar: CommonAppBar(title: "Nominee Details"),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: 20.0), // 5% margin on both sides
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 20),
-                _buildDetailRow(
-                    Icons.person, 'Nominee Name:', nomineeData['name']!),
-                _buildDetailRow(Icons.email, 'Email:', nomineeData['email']!),
-                _buildDetailRow(
-                    Icons.phone, 'Phone Number:', nomineeData['phone']!),
-                _buildDetailRow(
-                    Icons.cake, 'Date of Birth (DoB):', nomineeData['dob']!),
-                _buildDetailRow(Icons.group, 'Relation with User:',
-                    nomineeData['relation']!),
-                const SizedBox(height: 40), // Spacing before the button
-                Center(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 10),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(
-                          context, RoutesName.editProfileScreen);
-                    },
-                    child: const Text('Edit'),
-                  ),
-                ),
-              ],
-            ),
-          ),
+        child: Consumer<NomineeViewModel>(
+          builder: (context, viewModel, child) {
+            if (viewModel.isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (viewModel.nominee == null) {
+              return const Center(child: Text("No nominee data available"));
+            } else {
+              return Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: NomineeDetails(nominee: viewModel.nominee!),
+              );
+            }
+          },
         ),
-      ),
-    );
-  }
-
-  Widget _buildDetailRow(IconData icon, String label, String value) {
-    return Padding(
-      padding:
-          const EdgeInsets.only(bottom: 10.0), // 2% gap below every user info
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(icon, color: Colors.blue), // Icon before label
-              const SizedBox(width: 10), // Space between icon and label
-              Expanded(
-                child: Text(
-                  label,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Text(
-                value,
-                style: const TextStyle(fontSize: 16),
-                textAlign: TextAlign.end,
-              ),
-            ],
-          ),
-          const Divider(
-              color: Colors.blue,
-              thickness: 1), // 1px blue underline below every information
-        ],
       ),
     );
   }

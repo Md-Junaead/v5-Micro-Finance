@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:v1_micro_finance/screens/withdraw/loan/loan_gateway.dart';
-import 'package:v1_micro_finance/widgets/comon_appbar.dart';
+import 'package:v1_micro_finance/configs/widgets/comon_appbar.dart';
 
 // Verification Screen
 

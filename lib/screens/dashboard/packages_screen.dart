@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
 import 'package:v1_micro_finance/screens/dashboard/deposit_screen.dart';
-import 'package:v1_micro_finance/widgets/comon_appbar.dart';
+import 'package:v1_micro_finance/configs/widgets/comon_appbar.dart';
 
 class PackagesScreen extends StatelessWidget {
   const PackagesScreen({super.key});

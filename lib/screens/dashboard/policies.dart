@@ -4,7 +4,7 @@ import 'package:v1_micro_finance/screens/policies/beneficiary_funds.dart';
 import 'package:v1_micro_finance/screens/policies/loan_policy.dart';
 import 'package:v1_micro_finance/screens/policies/privacy_policy.dart';
 import 'package:v1_micro_finance/screens/policies/withdrawal_policy.dart';
-import 'package:v1_micro_finance/widgets/comon_appbar.dart';
+import 'package:v1_micro_finance/configs/widgets/comon_appbar.dart';
 
 class Policies extends StatelessWidget {
   // Placeholder values for profile name and image

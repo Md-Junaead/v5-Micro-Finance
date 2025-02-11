@@ -39,8 +39,8 @@ import 'package:v1_micro_finance/screens/withdraw/profit/profit_bank.dart';
 import 'package:v1_micro_finance/screens/withdraw/profit/profit_crypto.dart';
 import 'package:v1_micro_finance/screens/withdraw/profit/profit_gateway.dart';
 import 'package:v1_micro_finance/test/test.dart';
-import 'package:v1_micro_finance/widgets/app_drawer.dart';
-import 'package:v1_micro_finance/widgets/bottom_nav_bar.dart';
+import 'package:v1_micro_finance/configs/widgets/app_drawer.dart';
+import 'package:v1_micro_finance/configs/widgets/bottom_nav_bar.dart';
 import 'package:v1_micro_finance/screens/bottom/notification.dart';
 
 class Routes {

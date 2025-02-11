@@ -22,7 +22,7 @@ class MicroFinance extends StatelessWidget {
         ),
       ),
       // this is the initial route indicating from where our app will start
-      initialRoute: RoutesName.helpScreen,
+      initialRoute: RoutesName.startedScreen,
       onGenerateRoute: Routes.generateRoute, // Name of Open screen
     );
   }

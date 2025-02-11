@@ -4,7 +4,7 @@ import 'package:v1_micro_finance/screens/dashboard/referrals_screen.dart';
 import 'package:v1_micro_finance/screens/dashboard/help_screen.dart';
 import 'package:v1_micro_finance/screens/profile/my_account_screen.dart';
 import 'package:v1_micro_finance/screens/profile/nominee_screen.dart';
-import 'package:v1_micro_finance/widgets/user_app_bar.dart';
+import 'package:v1_micro_finance/configs/widgets/user_app_bar.dart';
 
 class UserProfile extends StatelessWidget {
   // Placeholder values for profile name and image
