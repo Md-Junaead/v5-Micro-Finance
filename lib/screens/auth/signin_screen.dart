@@ -1,8 +1,14 @@
+// File: lib/screens/auth/sign_in_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
+import 'package:v1_micro_finance/configs/services/signin_auth_api_service.dart';
 import 'package:v1_micro_finance/screens/auth/forgot_password.dart';
-import 'package:v1_micro_finance/configs/widgets/bottom_nav_bar.dart'; // Replace with the correct path
+import 'package:v1_micro_finance/configs/widgets/bottom_nav_bar.dart';
 
+import '../../configs/models/signin_user_model.dart'; // Replace with the correct path
+
+/// A stateful widget that represents the sign-in screen.
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -10,24 +16,45 @@ class SignInScreen extends StatefulWidget {
   _SignInScreenState createState() => _SignInScreenState();
 }
 
+/// The state for the SignInScreen.
 class _SignInScreenState extends State<SignInScreen> {
-  final TextEditingController _usernameController = TextEditingController();
+  // Controller for the email input field.
+  final TextEditingController _emailController = TextEditingController();
+  // Controller for the password input field.
   final TextEditingController _passwordController = TextEditingController();
 
-  void _login() {
-    // Perform basic validation
-    if (_usernameController.text.isNotEmpty &&
+  /// Handles the login process.
+  ///
+  /// Checks if both email and password fields are filled, then calls the API to verify credentials.
+  void _login() async {
+    // Perform basic validation to ensure fields are not empty
+    if (_emailController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty) {
-      // Navigate to BottomNavBar on successful login
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => BottomNavBar()),
+      // Call the login function from AuthService with the provided email and password.
+      User? user = await AuthService.login(
+        _emailController.text,
+        _passwordController.text,
       );
+
+      // If a matching user is found, navigate to the BottomNavBar (user's account).
+      if (user != null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => BottomNavBar()),
+        );
+      } else {
+        // Show an error message if login fails.
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Invalid email or password."),
+          ),
+        );
+      }
     } else {
-      // Show error message if fields are empty
+      // Show an error message if any of the fields are empty.
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Please enter both username and password."),
+          content: Text("Please enter both email and password."),
         ),
       );
     }
@@ -50,22 +77,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 250,
                 ),
               ),
-              // Heading
-              // Text(
-              //   'FINSYS',
-              //   textAlign: TextAlign.center,
-              //   style: TextStyle(
-              //     fontSize: 52,
-              //     fontWeight: FontWeight.bold,
-              //     color: Color(0xFF06426D),
-              //   ),
-              // ),
-              // SizedBox(height: 15),
-              // Username or Email Input Field
+              // Email Input Field
               TextField(
-                controller: _usernameController,
+                controller: _emailController,
                 decoration: InputDecoration(
-                  labelText: 'Username or Email',
+                  labelText: 'Email', // Updated label to "Email"
                   border: OutlineInputBorder(),
                 ),
               ),

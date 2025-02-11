@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart'; // Import Provider package
 import 'package:v1_micro_finance/configs/routes/routes.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
+import 'configs/viewmodels/signup_view_model.dart';// Import the SignupViewModel
 
 void main() {
-  runApp(MicroFinance());
+  runApp(
+    // Wrap the entire app with MultiProvider to make SignupViewModel available
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<SignupViewModel>(
+          create: (_) => SignupViewModel(),
+        ),
+      ],
+      child: MicroFinance(),
+    ),
+  );
 }
 
 class MicroFinance extends StatelessWidget {
@@ -21,9 +33,9 @@ class MicroFinance extends StatelessWidget {
           backgroundColor: Color(0xFF06426D), // Set AppBar color globally
         ),
       ),
-      // this is the initial route indicating from where our app will start
+      // This is the initial route indicating from where our app will start
       initialRoute: RoutesName.startedScreen,
-      onGenerateRoute: Routes.generateRoute, // Name of Open screen
+      onGenerateRoute: Routes.generateRoute, // Route generator for navigation
     );
   }
 }
