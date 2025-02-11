@@ -6,8 +6,8 @@ import 'package:v1_micro_finance/screens/dashboard/policies.dart';
 import 'package:v1_micro_finance/screens/dashboard/quick_loan_screen.dart';
 import 'package:v1_micro_finance/screens/dashboard/referrals_screen.dart';
 import 'package:v1_micro_finance/screens/dashboard/help_screen.dart';
-import 'package:v1_micro_finance/widgets/app_drawer.dart';
-import 'package:v1_micro_finance/widgets/appbar.dart';
+import 'package:v1_micro_finance/configs/widgets/app_drawer.dart';
+import 'package:v1_micro_finance/configs/widgets/appbar.dart';
 
 void main() {
   runApp(const MicroFinance());

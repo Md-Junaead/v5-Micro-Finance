@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:v1_micro_finance/widgets/comon_appbar.dart';
+import 'package:v1_micro_finance/configs/widgets/comon_appbar.dart';
 
 class HelpScreen extends StatefulWidget {
   const HelpScreen({super.key});

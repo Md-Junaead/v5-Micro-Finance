@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:v1_micro_finance/screens/withdraw/loan/loan_bank.dart';
 import 'package:v1_micro_finance/screens/withdraw/loan/loan_crypto.dart';
-import 'package:v1_micro_finance/widgets/comon_appbar.dart';
+import 'package:v1_micro_finance/configs/widgets/comon_appbar.dart';
 
 class LoanGateway extends StatefulWidget {
   const LoanGateway({super.key});

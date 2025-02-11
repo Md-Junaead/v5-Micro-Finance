@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:v1_micro_finance/widgets/comon_appbar.dart';
+import 'package:v1_micro_finance/configs/widgets/comon_appbar.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
