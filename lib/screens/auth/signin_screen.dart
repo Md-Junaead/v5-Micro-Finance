@@ -116,7 +116,7 @@ class SignInScreen extends StatelessWidget {
                   // Sign-Up Link
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, RoutesName.signupScreen);
+                      Navigator.pushNamed(context, RoutesName.sanaSignupScreen);
                     },
                     child: const Text(
                       'New to FINSYS? Sign Up',

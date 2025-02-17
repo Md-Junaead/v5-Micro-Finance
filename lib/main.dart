@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart'; // Import Provider package
 import 'package:v1_micro_finance/configs/routes/routes.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
-import 'configs/viewmodels/signup_view_model.dart';// Import the SignupViewModel
+import 'configs/viewmodels/signup_view_model.dart'; // Import the SignupViewModel
 
 void main() {
   runApp(
@@ -34,7 +34,7 @@ class MicroFinance extends StatelessWidget {
         ),
       ),
       // This is the initial route indicating from where our app will start
-      initialRoute: RoutesName.startedScreen,
+      initialRoute: RoutesName.splashScreen,
       onGenerateRoute: Routes.generateRoute, // Route generator for navigation
     );
   }

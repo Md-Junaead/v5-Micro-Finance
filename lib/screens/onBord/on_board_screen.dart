@@ -52,8 +52,10 @@ class StartedScreen extends StatelessWidget {
                       RoutesName.signInScreen); // Navigates to login screen
                 }),
                 _buildButton(context, 'Get Started', () {
-                  Navigator.pushNamed(context,
-                      RoutesName.signupScreen); // Navigates to signup screen
+                  Navigator.pushNamed(
+                      context,
+                      RoutesName
+                          .sanaSignupScreen); // Navigates to signup screen
                 }),
               ],
             ),

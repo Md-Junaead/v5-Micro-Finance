@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v1_micro_finance/configs/data/user_reg_view.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
 import 'package:v1_micro_finance/screens/dashboard/check_balance_screen.dart';
 import 'package:v1_micro_finance/screens/dashboard/deposit_screen.dart';
@@ -51,6 +52,10 @@ class Routes {
       case RoutesName.testScreen:
         return MaterialPageRoute(
             builder: (BuildContext context) => TestScreen());
+
+      case RoutesName.sanaSignupScreen:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => SanaSignupScreen());
 
 //SplashScreen routes name
 
