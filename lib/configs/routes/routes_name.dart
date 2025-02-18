@@ -1,10 +1,14 @@
 class RoutesName {
 //TestScreen routes name
   static const String testScreen = 'TestScreen';
+  static const String sanaSignupScreen = 'SanaSignupScreen';
 
   //SplashScreen routes name
   static const String splashScreen = 'SplashScreen';
   static const String startedScreen = 'StartedScreen';
+
+  //admin routes name
+  static const String adminDashboard = 'AdminDashboard';
 
   //Drawer  routes name
   static const String appDrawer = 'AppDrawer';

@@ -26,10 +26,12 @@ dependencies:
   google_fonts: ^6.2.1
   animate_do: ^3.3.4
   country_pickers: ^3.0.1
-  country_picker: ^2.0.27
   cupertino_icons: ^1.0.8
   flutter_email_sender: ^6.0.3
   flutter_animate: ^4.5.2
+  country_picker: ^2.0.27
+  shared_preferences: ^2.5.2
+  intl: ^0.20.2
 
 # Developer dependencies for testing and linting
 dev_dependencies:

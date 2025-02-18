@@ -1,40 +1,54 @@
-// File: lib/viewmodels/sign_in_view_model.dart
+// File: lib/configs/viewmodels/sign_in_view_model.dart
 
 import 'package:flutter/material.dart';
-import 'package:v1_micro_finance/configs/models/signin_user_model.dart';
-import 'package:v1_micro_finance/configs/services/signin_auth_api_service.dart';
+import 'package:http/http.dart' as http;
+import 'package:v1_micro_finance/configs/models/sign_in_request_model.dart';
+import 'dart:convert';
 
-/// ViewModel for SignInScreen using MVVM architecture.
+import 'package:v1_micro_finance/configs/models/sign_in_response_model.dart';
+
 class SignInViewModel extends ChangeNotifier {
-  // Controllers for the email and password input fields.
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+  SignInResponseModel? signInResponse;
 
-  bool isLoading = false; // Indicates whether a login request is in progress.
+  // User data to be accessed after login
+  String userRole = '';
 
-  /// Calls [AuthService.login] using the text from the controllers.
-  /// Returns true if login is successful (user found), otherwise false.
+  // Login method that uses SignInRequestModel and handles response with SignInResponseModel
   Future<bool> login() async {
-    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
-      return false;
-    }
     isLoading = true;
-    notifyListeners(); // Notify UI to update if needed.
+    notifyListeners();
 
-    User? user = await AuthService.login(
-      emailController.text,
-      passwordController.text,
+    // Create SignInRequestModel with user input
+    SignInRequestModel signInRequest = SignInRequestModel(
+      email: emailController.text,
+      password: passwordController.text,
     );
 
-    isLoading = false;
-    notifyListeners();
-    return user != null;
-  }
+    // Send the login request to the server
+    final response = await http.post(
+      Uri.parse(
+          'http://84.247.161.200:9090/api/microbank/get'), // Replace with your actual endpoint
+      body: json.encode(signInRequest.toJson()),
+      headers: {'Content-Type': 'application/json'},
+    );
 
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
+    // Handle the response
+    if (response.statusCode == 200) {
+      // Parse the response JSON
+      signInResponse = SignInResponseModel.fromJson(json.decode(response.body));
+      userRole = signInResponse?.user.userRole ??
+          ''; // Assuming the response includes a userRole
+      isLoading = false;
+      notifyListeners();
+      return true; // Successfully signed in
+    } else {
+      // If login fails, handle error
+      isLoading = false;
+      notifyListeners();
+      return false;
+    }
   }
 }
