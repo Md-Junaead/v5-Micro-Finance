@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:v1_micro_finance/configs/models/user_model.dart';
+import 'package:v1_micro_finance/configs/models/user.dart';
 
 class UserViewModel extends ChangeNotifier {
   User? _user;

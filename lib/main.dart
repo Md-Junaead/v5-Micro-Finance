@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart'; // Import Provider package
+import 'package:v1_micro_finance/configs/features/auth/presentation/providers/auth_provider.dart';
 import 'package:v1_micro_finance/configs/routes/routes.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
 import 'package:v1_micro_finance/configs/viewmodels/signup_view_model.dart';
@@ -12,7 +13,11 @@ void main() {
         ChangeNotifierProvider<SignupViewModel>(
           create: (_) => SignupViewModel(),
         ),
+        ChangeNotifierProvider<AuthProvider>(
+          create: (_) => AuthProvider(),
+        ),
       ],
+      child: MicroFinance(),
     ),
   );
 }
@@ -33,7 +38,7 @@ class MicroFinance extends StatelessWidget {
         ),
       ),
       // This is the initial route indicating from where our app will start
-      initialRoute: RoutesName.homeScreen,
+      initialRoute: RoutesName.startedScreen,
       onGenerateRoute: Routes.generateRoute, // Route generator for navigation
     );
   }

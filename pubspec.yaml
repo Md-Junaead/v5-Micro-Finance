@@ -32,6 +32,7 @@ dependencies:
   country_picker: ^2.0.27
   shared_preferences: ^2.5.2
   intl: ^0.20.2
+  flutter_secure_storage: ^9.2.4
 
 # Developer dependencies for testing and linting
 dev_dependencies:

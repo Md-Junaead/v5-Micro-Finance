@@ -1,105 +1,115 @@
-class balance {
-  int? id;
-  int? addBalance;
-  int? dipositB;
-  String? packages;
-  double? profitB;
-  int? referralB;
-  double? withdrawB;
-  UserRegistration? userRegistration;
+import 'dart:convert';
 
-  balance(
-      {this.id,
-      this.addBalance,
-      this.dipositB,
-      this.packages,
-      this.profitB,
-      this.referralB,
-      this.withdrawB,
-      this.userRegistration});
+class BalanceModel {
+  final int id;
+  final double addBalance;
+  final double dipositB;
+  final String packages;
+  final double profitB;
+  final double referralB;
+  final double withdrawB;
+  final UserRegistration userRegistration;
 
-  balance.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    addBalance = json['addBalance'];
-    dipositB = json['dipositB'];
-    packages = json['packages'];
-    profitB = json['profitB'];
-    referralB = json['referralB'];
-    withdrawB = json['withdrawB'];
-    userRegistration = json['userRegistration'] != null
-        ? new UserRegistration.fromJson(json['userRegistration'])
-        : null;
+  BalanceModel({
+    required this.id,
+    required this.addBalance,
+    required this.dipositB,
+    required this.packages,
+    required this.profitB,
+    required this.referralB,
+    required this.withdrawB,
+    required this.userRegistration,
+  });
+
+  factory BalanceModel.fromJson(Map<String, dynamic> json) {
+    return BalanceModel(
+      id: json['id'],
+      addBalance: (json['addBalance'] as num).toDouble(),
+      dipositB: (json['dipositB'] as num).toDouble(),
+      packages: json['packages'],
+      profitB: (json['profitB'] as num).toDouble(),
+      referralB: (json['referralB'] as num).toDouble(),
+      withdrawB: (json['withdrawB'] as num).toDouble(),
+      userRegistration: UserRegistration.fromJson(json['userRegistration']),
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['addBalance'] = this.addBalance;
-    data['dipositB'] = this.dipositB;
-    data['packages'] = this.packages;
-    data['profitB'] = this.profitB;
-    data['referralB'] = this.referralB;
-    data['withdrawB'] = this.withdrawB;
-    if (this.userRegistration != null) {
-      data['userRegistration'] = this.userRegistration!.toJson();
-    }
-    return data;
+    return {
+      'id': id,
+      'addBalance': addBalance,
+      'dipositB': dipositB,
+      'packages': packages,
+      'profitB': profitB,
+      'referralB': referralB,
+      'withdrawB': withdrawB,
+      'userRegistration': userRegistration.toJson(),
+    };
   }
 }
 
 class UserRegistration {
-  int? id;
-  String? userid;
-  String? password;
-  String? name;
-  String? email;
-  String? phoneNo;
-  String? dob;
-  String? address;
-  String? country;
-  String? image;
-  String? referralCode;
+  final int id;
+  final String userId;
+  final String password;
+  final String name;
+  final String email;
+  final String phoneNo;
+  final String dob;
+  final String address;
+  final String country;
+  final String image;
+  final String referralCode;
 
-  UserRegistration(
-      {this.id,
-      this.userid,
-      this.password,
-      this.name,
-      this.email,
-      this.phoneNo,
-      this.dob,
-      this.address,
-      this.country,
-      this.image,
-      this.referralCode});
+  UserRegistration({
+    required this.id,
+    required this.userId,
+    required this.password,
+    required this.name,
+    required this.email,
+    required this.phoneNo,
+    required this.dob,
+    required this.address,
+    required this.country,
+    required this.image,
+    required this.referralCode,
+  });
 
-  UserRegistration.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    userid = json['userid'];
-    password = json['password'];
-    name = json['name'];
-    email = json['email'];
-    phoneNo = json['phoneNo'];
-    dob = json['dob'];
-    address = json['address'];
-    country = json['country'];
-    image = json['image'];
-    referralCode = json['referralCode'];
+  factory UserRegistration.fromJson(Map<String, dynamic> json) {
+    return UserRegistration(
+      id: json['id'],
+      userId: json['userid'],
+      password: json['password'],
+      name: json['name'],
+      email: json['email'],
+      phoneNo: json['phoneNo'],
+      dob: json['dob'],
+      address: json['address'],
+      country: json['country'],
+      image: json['image'],
+      referralCode: json['referralCode'],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['userid'] = this.userid;
-    data['password'] = this.password;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['phoneNo'] = this.phoneNo;
-    data['dob'] = this.dob;
-    data['address'] = this.address;
-    data['country'] = this.country;
-    data['image'] = this.image;
-    data['referralCode'] = this.referralCode;
-    return data;
+    return {
+      'id': id,
+      'userid': userId,
+      'password': password,
+      'name': name,
+      'email': email,
+      'phoneNo': phoneNo,
+      'dob': dob,
+      'address': address,
+      'country': country,
+      'image': image,
+      'referralCode': referralCode,
+    };
   }
 }
+
+List<BalanceModel> balanceModelFromJson(String str) => List<BalanceModel>.from(
+    json.decode(str).map((x) => BalanceModel.fromJson(x)));
+
+String balanceModelToJson(List<BalanceModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
