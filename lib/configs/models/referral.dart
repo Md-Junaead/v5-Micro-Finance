@@ -1,30 +1,23 @@
-class Nominee {
+import 'dart:convert';
+
+class ReferralModel {
   final int id;
-  final String name;
-  final String email;
-  final String cellNo;
-  final DateTime dob;
-  final String relationship;
+  final String referral;
+  final String referredByCode;
   final User user;
 
-  Nominee({
+  ReferralModel({
     required this.id,
-    required this.name,
-    required this.email,
-    required this.cellNo,
-    required this.dob,
-    required this.relationship,
+    required this.referral,
+    required this.referredByCode,
     required this.user,
   });
 
-  factory Nominee.fromJson(Map<String, dynamic> json) {
-    return Nominee(
+  factory ReferralModel.fromJson(Map<String, dynamic> json) {
+    return ReferralModel(
       id: json['id'],
-      name: json['name'],
-      email: json['email'],
-      cellNo: json['cellNo'],
-      dob: DateTime.parse(json['dob']),
-      relationship: json['relationship'],
+      referral: json['referral'],
+      referredByCode: json['referredbycode'],
       user: User.fromJson(json['user']),
     );
   }
@@ -32,11 +25,8 @@ class Nominee {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'name': name,
-      'email': email,
-      'cellNo': cellNo,
-      'dob': dob.toIso8601String(),
-      'relationship': relationship,
+      'referral': referral,
+      'referredbycode': referredByCode,
       'user': user.toJson(),
     };
   }
@@ -49,7 +39,7 @@ class User {
   final String name;
   final String email;
   final String phoneNo;
-  final DateTime dob;
+  final String dob;
   final String address;
   final String country;
   final String image;
@@ -77,7 +67,7 @@ class User {
       name: json['name'],
       email: json['email'],
       phoneNo: json['phoneNo'],
-      dob: DateTime.parse(json['dob']),
+      dob: json['dob'],
       address: json['address'],
       country: json['country'],
       image: json['image'],
@@ -93,7 +83,7 @@ class User {
       'name': name,
       'email': email,
       'phoneNo': phoneNo,
-      'dob': dob.toIso8601String(),
+      'dob': dob,
       'address': address,
       'country': country,
       'image': image,
@@ -101,3 +91,10 @@ class User {
     };
   }
 }
+
+List<ReferralModel> referralModelFromJson(String str) =>
+    List<ReferralModel>.from(
+        json.decode(str).map((x) => ReferralModel.fromJson(x)));
+
+String referralModelToJson(List<ReferralModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));

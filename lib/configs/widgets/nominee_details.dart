@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../models/nominee_model.dart';
 
 class NomineeDetails extends StatelessWidget {
@@ -14,8 +15,9 @@ class NomineeDetails extends StatelessWidget {
         _buildDetailRow(Icons.person, 'Nominee Name:', nominee.name),
         _buildDetailRow(Icons.email, 'Email:', nominee.email),
         _buildDetailRow(Icons.phone, 'Phone Number:', nominee.cellNo),
-        _buildDetailRow(Icons.cake, 'Date of Birth:', nominee.dob),
-        _buildDetailRow(Icons.group, 'Relation with User:', nominee.relationship),
+        _buildDetailRow(Icons.cake, 'Date of Birth:', _formatDate(nominee.dob)),
+        _buildDetailRow(
+            Icons.group, 'Relation with User:', nominee.relationship),
         const SizedBox(height: 20),
         Center(
           child: ElevatedButton(
@@ -35,10 +37,17 @@ class NomineeDetails extends StatelessWidget {
         children: [
           Icon(icon, color: Colors.blue),
           const SizedBox(width: 10),
-          Expanded(child: Text(label, style: const TextStyle(fontWeight: FontWeight.bold))),
+          Expanded(
+              child: Text(label,
+                  style: const TextStyle(fontWeight: FontWeight.bold))),
           Text(value, style: const TextStyle(fontSize: 16)),
         ],
       ),
     );
+  }
+
+  // Helper method to format DateTime
+  String _formatDate(DateTime date) {
+    return DateFormat('yyyy-MM-dd').format(date);
   }
 }

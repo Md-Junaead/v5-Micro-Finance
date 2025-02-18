@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:v1_micro_finance/configs/models/user_model.dart';
+import 'package:v1_micro_finance/configs/models/reg_user_model.dart';
 
 class UserService {
   final String apiUrl = 'http://84.247.161.200:9090/api/microbank/get';
