@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:v1_micro_finance/configs/data/user_reg_view.dart';
+import 'package:v1_micro_finance/configs/features/auth/presentation/providers/auth_provider.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
+import 'package:v1_micro_finance/configs/viewmodels/signup_view_model.dart';
 import 'package:v1_micro_finance/screens/admin/admin.dart';
 import 'package:v1_micro_finance/screens/dashboard/check_balance_screen.dart';
 import 'package:v1_micro_finance/screens/dashboard/deposit_screen.dart';

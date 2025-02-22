@@ -15,7 +15,7 @@ class UserService {
     }
   }
 
-  Future<void> UserSave(UserRegistration user) async {
+  Future<void> userSave(UserRegistration user) async {
     final response = await http.post(
       Uri.parse('http://84.247.161.200:9090/api/microbank/save'),
       headers: {'Content-Type': 'application/json'},

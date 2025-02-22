@@ -24,14 +24,15 @@ dependencies:
   carousel_slider: ^5.0.0
   flutter_bounce: ^1.1.0
   google_fonts: ^6.2.1
-  animate_do: ^3.3.4
+  animate_do: ^4.1.1
   country_pickers: ^3.0.1
   cupertino_icons: ^1.0.8
-  flutter_email_sender: ^6.0.3
+  flutter_email_sender: ^7.0.0
   flutter_animate: ^4.5.2
   country_picker: ^2.0.27
   shared_preferences: ^2.5.2
   intl: ^0.20.2
+  flutter_secure_storage: ^9.2.4
 
 # Developer dependencies for testing and linting
 dev_dependencies:

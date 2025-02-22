@@ -20,10 +20,11 @@ class StartedScreen extends StatelessWidget {
               enableInfiniteScroll: true, // Infinite loop of images
             ),
             items: [
-              'assets/images/image_one.png',
-              'assets/images/image_two.png',
-              'assets/images/image_three.png',
-              'assets/images/image_four.png',
+              // 'assets/images/image_one.png',
+              'assets/images/image_one.webp',
+              'assets/images/image_two.webp',
+              'assets/images/image_three.webp',
+              'assets/images/image_four.webp',
             ].map((imagePath) {
               return Container(
                 width: MediaQuery.of(context).size.width, // Full width

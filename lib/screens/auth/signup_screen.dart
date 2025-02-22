@@ -7,7 +7,7 @@ import 'package:v1_micro_finance/configs/widgets/country_picker_widget.dart';
 import 'package:v1_micro_finance/configs/widgets/reg_text_field_widget.dart';
 
 class SignupScreen extends StatefulWidget {
-  const SignupScreen({Key? key}) : super(key: key);
+  const SignupScreen({super.key});
   @override
   _SignupScreenState createState() => _SignupScreenState();
 }

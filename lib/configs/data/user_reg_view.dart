@@ -27,9 +27,10 @@ class SanaSignupScreen extends StatelessWidget {
                   children: [
                     const SizedBox(
                         height: 20), // ✅ 5% margin from top for input fields
+
+                    _buildTextField(viewModel.nameController, 'Name', false),
                     _buildTextField(
                         viewModel.passwordController, 'Password', true),
-                    _buildTextField(viewModel.nameController, 'Name', false),
                     _buildTextField(viewModel.emailController, 'Email', false),
                     _buildTextField(
                         viewModel.phoneController, 'Phone Number', false),

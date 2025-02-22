@@ -7,12 +7,12 @@ class TextFieldWidget extends StatelessWidget {
   final TextInputType keyboardType;
 
   const TextFieldWidget({
-    Key? key,
+    super.key,
     required this.controller,
     required this.label,
     this.obscure = false,
     this.keyboardType = TextInputType.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
