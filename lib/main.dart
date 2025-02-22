@@ -29,6 +29,7 @@ class MicroFinance extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FINSYS',
+      // // flutter build apk --build-name=1.0 --build-number=1
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor:
