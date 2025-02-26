@@ -32,12 +32,12 @@ class SanaSignupScreen extends StatelessWidget {
                     _buildTextField(
                         viewModel.passwordController, 'Password', true),
                     _buildTextField(viewModel.emailController, 'Email', false),
+                    _buildCountryPicker(viewModel, context),
                     _buildTextField(
                         viewModel.phoneController, 'Phone Number', false),
                     _buildTextField(
                         viewModel.addressController, 'Address', false),
                     _buildDatePicker(viewModel, context),
-                    _buildCountryPicker(viewModel, context),
                     const SizedBox(height: 5),
 
                     // Upload Image Button with Checkmark
