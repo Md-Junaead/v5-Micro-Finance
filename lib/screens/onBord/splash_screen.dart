@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToHome() async {
-    await Future.delayed(Duration(seconds: 2), () {
+    await Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, RoutesName.startedScreen);
     });
   }

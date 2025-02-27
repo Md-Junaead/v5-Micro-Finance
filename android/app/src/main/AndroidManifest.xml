@@ -20,9 +20,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
-        android:label="v4_micro_finance"
+        android:label="FINSYS"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher_icon"
         android:usesCleartextTraffic="true">  <!-- Allows HTTP requests if API is non-HTTPS -->
 
         <activity
