@@ -1,39 +1,45 @@
+import 'dart:convert';
+
 class UserRegistration {
-  int id;
-
-  String userid;
-  String password;
-  String name;
-  String email;
-  String phoneNo;
-  DateTime dob;
-  String address;
-  String? country;
-  String? image;
-
-  String? referralCode;
+  final int id;
+  final String userid;
+  final String name;
+  final String password;
+  final String confirmPassword;
+  final String email;
+  final String phoneNo;
+  final DateTime dob;
+  final String address;
+  final String country;
+  final String image;
+  final String referralCode;
+  final String nidNumber;
+  final String? passport;
 
   UserRegistration({
     required this.id,
     required this.userid,
-    required this.password,
     required this.name,
+    required this.password,
+    required this.confirmPassword,
     required this.email,
     required this.phoneNo,
     required this.dob,
     required this.address,
-    this.country,
-    this.image,
-    this.referralCode,
+    required this.country,
+    required this.image,
+    required this.referralCode,
+    required this.nidNumber,
+    this.passport,
   });
 
-  // Convert JSON to UserRegistration instance
   factory UserRegistration.fromJson(Map<String, dynamic> json) {
     return UserRegistration(
       id: json['id'],
       userid: json['userid'],
-      password: json['password'],
       name: json['name'],
+      password: json['password'],
+      confirmPassword: json['confirmpassword'],
       email: json['email'],
       phoneNo: json['phoneNo'],
       dob: DateTime.parse(json['dob']),
@@ -41,16 +47,18 @@ class UserRegistration {
       country: json['country'],
       image: json['image'],
       referralCode: json['referralCode'],
+      nidNumber: json['nidnumber'],
+      passport: json['passport'],
     );
   }
 
-  // Convert UserRegistration instance to JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'userid': userid,
-      'password': password,
       'name': name,
+      'password': password,
+      'confirmpassword': confirmPassword,
       'email': email,
       'phoneNo': phoneNo,
       'dob': dob.toIso8601String(),
@@ -58,6 +66,17 @@ class UserRegistration {
       'country': country,
       'image': image,
       'referralCode': referralCode,
+      'nidnumber': nidNumber,
+      'passport': passport,
     };
+  }
+
+  static List<UserRegistration> fromJsonList(String str) {
+    return List<UserRegistration>.from(
+        json.decode(str).map((x) => UserRegistration.fromJson(x)));
+  }
+
+  static String toJsonList(List<UserRegistration> users) {
+    return json.encode(List<dynamic>.from(users.map((x) => x.toJson())));
   }
 }

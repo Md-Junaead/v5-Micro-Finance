@@ -44,18 +44,19 @@ dev_dependencies:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icons/app_icon_bg_blue.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21
+  image_path: "assets/icons/finsys_app_icon.png"
+
+
 
 # Flutter-specific configurations
 flutter:
   uses-material-design: true
-
   # Assets declaration
   assets:
     - assets/images/
     - assets/splash/splash_screen.gif
     - assets/logos/
+    - assets/icons/
 
   # Fonts declaration
   fonts:

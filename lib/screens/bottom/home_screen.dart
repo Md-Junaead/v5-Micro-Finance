@@ -34,32 +34,30 @@ class HomeScreen extends StatelessWidget {
 
       {
         "icon": Icons.real_estate_agent,
-        "text": "Quick Loan",
-        "screen": QuickLoanScreen()
+        "label": "Quick Loan",
+        "screen": const QuickLoanScreen()
       }, //QuickLoanScreen
       {
         "icon": Icons.people,
-        "text": "Referrals",
-        "screen": ReferralsScreen()
+        "label": "Referrals",
+        "screen": const ReferralsScreen()
       }, //ReferralsScreen
       {
         "icon": Icons.card_giftcard,
-        "text": "Saving Plan",
-        "screen": PackagesScreen()
+        "label": "Saving Plan",
+        "screen": const PackagesScreen()
       }, //Saving Plan
 
       {
         "icon": Icons.contact_support,
-        "text": "help",
-        "screen": HelpScreen()
+        "label": "help",
+        "screen": const HelpScreen()
       }, //HelpScreen
       {
         "icon": Icons.policy_outlined,
-        "text": "Policies",
+        "label": "Policies",
         "screen": Policies()
       }, //Policies
-
-      {"icon": Icons.play_circle, "text": "Watch Now", "screen": Policies()},
     ];
 
     return Scaffold(

@@ -1,76 +1,50 @@
-// ViewModel: Handles the business logic
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 
 class SignupViewModel extends ChangeNotifier {
-  final formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>(); // Form key for validation
 
   // Controllers for input fields
-  final passwordController = TextEditingController();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
-  final phoneController = TextEditingController();
-  final addressController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final referralCodeController = TextEditingController();
 
-  DateTime? dob; // Stores Date of Birth
   String? selectedCountry; // Stores Selected Country
-  XFile? selectedImage; // Stores Selected Image
-  final ImagePicker _picker = ImagePicker();
-
-  // Getter to access image status in the UI
-  XFile? get image => selectedImage; // ✅ ADDED THIS GETTER TO FIX ERROR
-
-  // Picks image from the gallery
-  Future<void> pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      selectedImage = pickedFile;
-      notifyListeners(); // Notify UI to update
-    }
-  }
 
   // Saves user data to the API
   Future<void> saveUser(BuildContext context) async {
-    // Validate form and check if country and image are selected
+    // Validate form and check required fields
     if (!formKey.currentState!.validate() ||
         selectedCountry == null ||
-        selectedImage == null) {
+        referralCodeController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Please complete the form and upload an image.')),
+        const SnackBar(content: Text('Please complete the form.')),
       );
       return;
     }
 
     // Prepare user data in JSON format
     final user = {
-      'id': 0,
-      'password': passwordController.text,
       'name': nameController.text,
       'email': emailController.text,
-      'phoneNo': phoneController.text,
-      'dob': dob?.toIso8601String() ?? DateTime.now().toIso8601String(),
-      'address': addressController.text,
+      'password': passwordController.text,
+      'confirmpassword': confirmPasswordController.text,
       'country': selectedCountry,
-      'image': '', // Image is sent separately as a file
+      'referralCode': referralCodeController.text,
     };
 
-    var uri = Uri.parse('http://84.247.161.200:9090/api/microbank/save');
+    var uri =
+        Uri.parse('http://108.181.173.121:9090/api/UserRegistration/save');
     var request = http.MultipartRequest('POST', uri);
 
     // Attach user JSON data as a multipart file
     request.files.add(
       http.MultipartFile.fromString('userRegistration', jsonEncode(user),
           contentType: MediaType('application', 'json')),
-    );
-
-    // Attach image file
-    request.files.add(
-      await http.MultipartFile.fromPath('image', selectedImage!.path,
-          contentType: MediaType('image', 'jpeg')),
     );
 
     try {
@@ -97,7 +71,6 @@ class SignupViewModel extends ChangeNotifier {
 
 // // ViewModel: Handles the business logic
 // import 'dart:convert';
-// import 'dart:typed_data';
 // import 'package:flutter/material.dart';
 // import 'package:image_picker/image_picker.dart';
 // import 'package:http/http.dart' as http;
@@ -105,27 +78,34 @@ class SignupViewModel extends ChangeNotifier {
 
 // class SignupViewModel extends ChangeNotifier {
 //   final formKey = GlobalKey<FormState>();
+
+//   // Controllers for input fields
 //   final passwordController = TextEditingController();
 //   final nameController = TextEditingController();
 //   final emailController = TextEditingController();
 //   final phoneController = TextEditingController();
 //   final addressController = TextEditingController();
-//   DateTime? dob;
-//   String? selectedCountry;
-//   XFile? selectedImage;
+
+//   DateTime? dob; // Stores Date of Birth
+//   String? selectedCountry; // Stores Selected Country
+//   XFile? selectedImage; // Stores Selected Image
 //   final ImagePicker _picker = ImagePicker();
 
-//   // Picks image from gallery
+//   // Getter to access image status in the UI
+//   XFile? get image => selectedImage; // ✅ ADDED THIS GETTER TO FIX ERROR
+
+//   // Picks image from the gallery
 //   Future<void> pickImage() async {
 //     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 //     if (pickedFile != null) {
 //       selectedImage = pickedFile;
-//       notifyListeners();
+//       notifyListeners(); // Notify UI to update
 //     }
 //   }
 
 //   // Saves user data to the API
 //   Future<void> saveUser(BuildContext context) async {
+//     // Validate form and check if country and image are selected
 //     if (!formKey.currentState!.validate() ||
 //         selectedCountry == null ||
 //         selectedImage == null) {
@@ -136,6 +116,7 @@ class SignupViewModel extends ChangeNotifier {
 //       return;
 //     }
 
+//     // Prepare user data in JSON format
 //     final user = {
 //       'id': 0,
 //       'password': passwordController.text,
@@ -145,16 +126,19 @@ class SignupViewModel extends ChangeNotifier {
 //       'dob': dob?.toIso8601String() ?? DateTime.now().toIso8601String(),
 //       'address': addressController.text,
 //       'country': selectedCountry,
-//       'image': '',
+//       'image': '', // Image is sent separately as a file
 //     };
 
 //     var uri = Uri.parse('http://84.247.161.200:9090/api/microbank/save');
 //     var request = http.MultipartRequest('POST', uri);
 
+//     // Attach user JSON data as a multipart file
 //     request.files.add(
 //       http.MultipartFile.fromString('userRegistration', jsonEncode(user),
 //           contentType: MediaType('application', 'json')),
 //     );
+
+//     // Attach image file
 //     request.files.add(
 //       await http.MultipartFile.fromPath('image', selectedImage!.path,
 //           contentType: MediaType('image', 'jpeg')),
@@ -169,8 +153,9 @@ class SignupViewModel extends ChangeNotifier {
 //       } else {
 //         ScaffoldMessenger.of(context).showSnackBar(
 //           SnackBar(
-//               content: Text(
-//                   'Failed to add user. Status code: ${response.statusCode}')),
+//             content:
+//                 Text('Failed to add user. Status code: ${response.statusCode}'),
+//           ),
 //         );
 //       }
 //     } catch (e) {
