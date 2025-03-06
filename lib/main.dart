@@ -3,21 +3,23 @@ import 'package:provider/provider.dart'; // Import Provider package
 import 'package:v1_micro_finance/configs/features/auth/presentation/providers/auth_provider.dart';
 import 'package:v1_micro_finance/configs/routes/routes.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
-import 'package:v1_micro_finance/configs/viewmodels/signup_view_model.dart';
+import 'package:v1_micro_finance/configs/viewmodels/reg_view_model.dart';
 import 'package:v1_micro_finance/configs/viewmodels/user_view_model.dart';
+import 'package:v1_micro_finance/configs/viewmodels/login_view_model.dart';
 
 void main() {
   runApp(
-    // Wrap the entire app with MultiProvider to make SignupViewModel available
+    // Wrap the entire app with Multi
+    //Provider to make SignupViewModel available
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<SignupViewModel>(
-          create: (_) => SignupViewModel(),
-        ),
         ChangeNotifierProvider<AuthProvider>(
           create: (_) => AuthProvider(),
         ),
         ChangeNotifierProvider(create: (_) => UserViewModel()),
+        ChangeNotifierProvider(
+            create: (context) => UserRegistrationViewModel()),
+        ChangeNotifierProvider(create: (_) => LoginViewModel())
       ],
       child: MicroFinance(),
     ),

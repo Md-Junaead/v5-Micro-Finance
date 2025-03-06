@@ -50,13 +50,13 @@ class StartedScreen extends StatelessWidget {
               children: [
                 _buildButton(context, 'Login', () {
                   Navigator.pushNamed(context,
-                      RoutesName.signInScreen); // Navigates to login screen
+                      RoutesName.loginScreen); // Navigates to login screen
                 }),
                 _buildButton(context, 'Get Started', () {
                   Navigator.pushNamed(
                       context,
                       RoutesName
-                          .sanaSignupScreen); // Navigates to signup screen
+                          .userRegistrationScreen); // Navigates to signup screen
                 }),
               ],
             ),

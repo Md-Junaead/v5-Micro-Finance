@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:v1_micro_finance/configs/data/user_reg_view.dart';
-import 'package:v1_micro_finance/configs/features/auth/presentation/providers/auth_provider.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
-import 'package:v1_micro_finance/configs/viewmodels/signup_view_model.dart';
 import 'package:v1_micro_finance/screens/admin/admin.dart';
 import 'package:v1_micro_finance/screens/dashboard/check_balance_screen.dart';
 import 'package:v1_micro_finance/screens/dashboard/deposit_screen.dart';
@@ -17,6 +13,7 @@ import 'package:v1_micro_finance/screens/dashboard/help_screen.dart';
 import 'package:v1_micro_finance/screens/loan/loan_reques_screen.dart';
 import 'package:v1_micro_finance/screens/loan/loan_status_screen.dart';
 import 'package:v1_micro_finance/screens/loan/pay_emi_screen.dart';
+import 'package:v1_micro_finance/screens/auth/login_screen.dart';
 import 'package:v1_micro_finance/screens/policies/about_us.dart';
 import 'package:v1_micro_finance/screens/policies/beneficiary_funds.dart';
 import 'package:v1_micro_finance/screens/policies/loan_policy.dart';
@@ -25,7 +22,6 @@ import 'package:v1_micro_finance/screens/policies/withdrawal_policy.dart';
 import 'package:v1_micro_finance/screens/profile/edit_profile_screen.dart';
 import 'package:v1_micro_finance/screens/auth/forgot_password.dart';
 import 'package:v1_micro_finance/screens/bottom/home_screen.dart';
-import 'package:v1_micro_finance/screens/auth/signin_screen.dart';
 import 'package:v1_micro_finance/screens/auth/signup_screen.dart';
 import 'package:v1_micro_finance/screens/profile/my_account_screen.dart';
 import 'package:v1_micro_finance/screens/profile/nominee_screen.dart';
@@ -57,10 +53,6 @@ class Routes {
         return MaterialPageRoute(
             builder: (BuildContext context) => TestScreen());
 
-      case RoutesName.sanaSignupScreen:
-        return MaterialPageRoute(
-            builder: (BuildContext context) => SanaSignupScreen());
-
 //SplashScreen routes name
 
       case RoutesName.splashScreen:
@@ -77,13 +69,14 @@ class Routes {
             builder: (BuildContext context) => AdminDashboard());
 
 //Auth Screen routes name
-      case RoutesName.signInScreen:
-        return MaterialPageRoute(
-            builder: (BuildContext context) => SignInScreen());
 
-      case RoutesName.signupScreen:
+      case RoutesName.loginScreen:
         return MaterialPageRoute(
-            builder: (BuildContext context) => SignupScreen());
+            builder: (BuildContext context) => LoginScreen());
+
+      case RoutesName.userRegistrationScreen:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => UserRegistrationScreen());
 
       case RoutesName.forgotPasswordScreen:
         return MaterialPageRoute(
