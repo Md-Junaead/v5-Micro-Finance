@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:v1_micro_finance/configs/viewmodels/reg_view_model.dart';
-import 'package:v1_micro_finance/screens/auth/signin_screen.dart';
+import 'package:v1_micro_finance/screens/auth/login_screen.dart';
 
 class UserRegistrationScreen extends StatefulWidget {
+  const UserRegistrationScreen({super.key});
+
   @override
   _UserRegistrationScreenState createState() => _UserRegistrationScreenState();
 }
@@ -304,7 +306,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SignInScreen()),
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
                     );
                   },
                   child: const Center(

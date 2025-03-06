@@ -1,7 +1,6 @@
 class RoutesName {
 //TestScreen routes name
   static const String testScreen = 'TestScreen';
-  static const String sanaSignupScreen = 'SanaSignupScreen';
 
   //SplashScreen routes name
   static const String splashScreen = 'SplashScreen';
@@ -14,7 +13,7 @@ class RoutesName {
   static const String appDrawer = 'AppDrawer';
 
   //Auth routes name
-  static const String signInScreen = 'SignInScreen';
+  static const String loginScreen = 'LoginScreen';
   static const String userRegistrationScreen = 'UserRegistrationScreen';
   static const String forgotPasswordScreen = 'ForgotPasswordScreen';
   static const String verificationScreen = 'VerificationScreen';

@@ -5,10 +5,12 @@ import 'package:v1_micro_finance/configs/routes/routes.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
 import 'package:v1_micro_finance/configs/viewmodels/reg_view_model.dart';
 import 'package:v1_micro_finance/configs/viewmodels/user_view_model.dart';
+import 'package:v1_micro_finance/configs/viewmodels/login_view_model.dart';
 
 void main() {
   runApp(
-    // Wrap the entire app with MultiProvider to make SignupViewModel available
+    // Wrap the entire app with Multi
+    //Provider to make SignupViewModel available
     MultiProvider(
       providers: [
         ChangeNotifierProvider<AuthProvider>(
@@ -17,6 +19,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => UserViewModel()),
         ChangeNotifierProvider(
             create: (context) => UserRegistrationViewModel()),
+        ChangeNotifierProvider(create: (_) => LoginViewModel())
       ],
       child: MicroFinance(),
     ),
@@ -40,7 +43,7 @@ class MicroFinance extends StatelessWidget {
         ),
       ),
       // This is the initial route indicating from where our app will start
-      initialRoute: RoutesName.homeScreen,
+      initialRoute: RoutesName.splashScreen,
       onGenerateRoute: Routes.generateRoute, // Route generator for navigation
     );
   }

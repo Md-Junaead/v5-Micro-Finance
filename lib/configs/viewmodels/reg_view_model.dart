@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -57,7 +56,7 @@ class UserRegistrationViewModel extends ChangeNotifier {
         email.isNotEmpty) {
       try {
         final response = await http.post(
-          Uri.parse('http://108.181.173.121:7070/api/userRegistration'),
+          Uri.parse('http://108.181.173.121:7071/api/userRegistration'),
           headers: {'Content-Type': 'application/json'},
           body: json.encode({
             'country': country,
