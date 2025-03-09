@@ -1,0 +1,2 @@
+D:/v5-Micro-Finance/android/app/.cxx/Debug/3v685967/x86/CMakeFiles/edit_cache.dir
+D:/v5-Micro-Finance/android/app/.cxx/Debug/3v685967/x86/CMakeFiles/rebuild_cache.dir

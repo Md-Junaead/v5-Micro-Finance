@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart'; // Import Provider package
-import 'package:v1_micro_finance/configs/features/auth/presentation/providers/auth_provider.dart';
 import 'package:v1_micro_finance/configs/routes/routes.dart';
 import 'package:v1_micro_finance/configs/routes/routes_name.dart';
 import 'package:v1_micro_finance/configs/viewmodels/reg_view_model.dart';
@@ -13,9 +12,6 @@ void main() {
     //Provider to make SignupViewModel available
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthProvider>(
-          create: (_) => AuthProvider(),
-        ),
         ChangeNotifierProvider(create: (_) => UserViewModel()),
         ChangeNotifierProvider(
             create: (context) => UserRegistrationViewModel()),
