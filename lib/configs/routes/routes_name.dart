@@ -1,6 +1,7 @@
 class RoutesName {
 //TestScreen routes name
   static const String testScreen = 'TestScreen';
+  static const String userInfoScreen = 'UserInfoScreen';
 
   //SplashScreen routes name
   static const String splashScreen = 'SplashScreen';
